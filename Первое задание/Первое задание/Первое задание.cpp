@@ -11,10 +11,11 @@ struct time
 struct data
 {
 	int d; // тип данных представляет целое число
+	data *next; // адресная часть на следующий элемент
 }dat[9];
 void set(int q) // функция рамдомного задания компонетнов q-количество компонентов
 {
-	srand(time(0));
+	srand((0));
 	for (int i = 0; i < q; i++)
 	{
 		tit[i].chas = rand() % 23;
@@ -22,12 +23,12 @@ void set(int q) // функция рамдомного задания компо
 		tit[i].sec = rand() % 60;
 	}
 }
-void print(int q) //функция вывода содержимого структуры
+void print(int q,const char *delim) //функция вывода содержимого структуры
 {
 	for (int i = 0; i < q; i++)
 	{
-		cout << "\n" << tit[i].chas << ":";
-		cout << tit[i].min << ":";
+		cout << "\n" << tit[i].chas << delim;
+		cout << tit[i].min << delim;
 		cout << tit[i].sec << ".";
 	}
 }
@@ -114,7 +115,7 @@ int minutes(int q) //проверки минут и сек
 }
 int read(int q) //ввод значений с клавиатуры
 {
-	cout << "\n enter number of components <time> required for input." << endl;
+	cout << "\n enter number of components <Time> required for input." << endl;
 	int en = check(q);
 	for (int i = 0; i < en; i++)
 	{
@@ -132,7 +133,7 @@ int read(int q) //ввод значений с клавиатуры
 }
 void setd(int q) // рандомное задание компонетов data
 {
-	srand(time(0));
+	srand((0));
 	for (int i = 0; i < q; i++)
 	{
 		dat[i].d = rand() % (21474674) - 21474;
@@ -165,17 +166,62 @@ int checkd(int q) // функция проверки значения data
 	}
 	return q;
 }
-void printd(int q)
+void printd(int q, const char *delim)
 {
 	cout << endl;
-	for (int i = 0; i < q; i++)
+	while(q--)
 	{
-		cout << dat[i].d << " ";
+		cout << dat[q].d << delim;
 	}
 }
-int readd(int q)
+void read() // ввод значения с клавиатуры для data
 {
-
+	struct data *xz = NULL;
+	struct data *zx;
+	zx = xz;
+	cout << "\n Enter the value of the item" << endl;
+	while (true)
+	{
+		int a;
+		cout << " Keep typing items" << endl;
+		cin >> a;
+		if (cin.fail())
+		{
+			cin.clear();
+			cin.ignore(32767, '\n');
+			break;
+		}
+		if (a > 999 || a < -999)
+		{
+			cout << "Possible values <-999 до 999> " << endl;
+			continue;
+		}
+		if (xz == NULL)
+		{
+			xz = new struct data;
+			xz->d = a;
+			xz->next = NULL;
+			zx = xz;
+		}
+		else
+		{
+			zx->next = new struct data;
+			zx->next->d = a;
+			zx->next->next = NULL; // Элемент после него пустой 
+			zx = zx->next; // Теперь этот эл-т является последним
+		}
+	}
+	if (xz == NULL)
+	{
+		cout << "no elements" << endl;
+		return;
+	}
+	while (xz)
+	{
+		cout << xz->d << " ";
+		xz = xz->next;
+	}
+	cout << endl;
 }
 int main()
 {
@@ -183,12 +229,13 @@ int main()
 	int q = 0;
 	int ru = check(q);
 	set(ru);
-	print(ru);
+	print(ru, ":");
 	int w = read(q);
-	print(w);
+	print(w, ";");
 	cout << "\nDATA TYPE" << endl;
 	int na = checkd(q);
 	setd(na);
-	printd(na);
+	printd(na, " ");
+	read();
 	return 0;
 }
