@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-	Point a;
+	Point a;		//создание объекта в стеке
 	a.SetX(10);
 	a.SetY(20);
 	cout << a.GetX() << ", " << a.GetY() << endl;
@@ -13,4 +13,12 @@ int main()
 
 	a.Move(5, 10);
 	a.Print(); cout << endl;
+
+	Point *p = new Point;	//создание объекта в куче (в динамической памяти)
+	// здесь д.б Обработка ошибок при выделение памяти!!
+	p->SetX(65);
+	p->SetY(70);
+	p->Print(); cout << endl;
+
+	delete p; // НЕЛЬЗЯ ЗАБЫВАТЬ !!
 }

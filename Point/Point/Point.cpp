@@ -2,7 +2,6 @@
 #include<iostream>
 #include"Point.h"
 using namespace std;
-
 void Point::SetX(int _x)
 {
 	x = _x >= 0 ? _x : 0;
@@ -20,3 +19,11 @@ void Point::Move(int dx, int dy)
 	SetX(x + dx);
 	SetY(y + dy);
 }
+/* int Point::ReadX(int _x)
+{
+
+}
+int Point::ReadY(int _y)
+{
+
+}*/
