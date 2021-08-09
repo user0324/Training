@@ -2,22 +2,20 @@
 #pragma once
 class Point
 {
-	friend double fDist(const Point &, const Point &);
+	friend double fDist(const Point &, const Point &);		//поиск растояния между точками
 private:
 	int x, y;
 public:
 	int GetX()const { return x; }	//inline по умолчанию (т.к функция и тело в классе)
-	int GetY()const;
-	void SetX(int);
-	void SetY(int);
+	int GetY()const;	//установка значения y
+	void SetX(int);		//получение значения x
+	void SetY(int);		//получение значения y
 	int ReadX(int);
-	int ReadY(int);
-	void Print()const;
-	void Move(int delta_x, int delta_y); 
+
+
+	void Print()const;		//печать значений x и y на экран
+	void Move(int delta_x, int delta_y);		//изменение значений x и y
 
 };
-inline int Point::GetY()const
-{
-	return y;
-}
+inline int Point::GetY()const{return y;}	//установка значения y
 

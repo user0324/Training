@@ -40,4 +40,5 @@ int main()
 	cout << " = " << fDist(a, *p) << endl;
 
 	delete p; // ÍÅËÜÇß ÇÀÁÛÂÀÒÜ !!
+	return 0;
 }
