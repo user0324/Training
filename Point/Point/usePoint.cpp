@@ -1,6 +1,7 @@
 //»спользование класса Point (клинтский код , клиет класса)
 #include<iostream>
 #include<cmath>
+#include<string>
 #include"Point.h"
 using namespace std;
 
@@ -9,11 +10,16 @@ double gDist(const Point &a, const Point &b)	// чтобы работало быстрей и эффекти
 {
 	return sqrt(pow(static_cast <double>(a.GetX() - b.GetX()), 2) + pow(static_cast <double>(a.GetY() - b.GetY()), 2));
 }
-
+Point test(Point q)
+{
+	return q;
+}
 int main()
 {
-	Point a;		//создание объекта в стеке
-	a.SetX(10);
+	Point a;//создание объекта в стеке
+	Point c = a;
+	test(a);
+	/*a.SetX(10);
 	a.SetY(20);
 	cout << a.GetX() << ", " << a.GetY() << endl;
 	a.Print(); cout << endl;
@@ -39,6 +45,12 @@ int main()
 	cout << " and "; p->Print();
 	cout << " = " << fDist(a, *p) << endl;
 
-	delete p; // Ќ≈Ћ№«я «јЅџ¬ј“№ !!
+	cout << "Distance from "; a.Print();
+	cout << " and "; p->Print();
+	cout << " = " << a.Dist(*p) << endl; //первый вариант 
+	cout << " = " << p->Dist(a) << endl;	//второй вариант
+
+	delete p; // Ќ≈Ћ№«я «јЅџ¬ј“№ !!*/
+	
 	return 0;
 }

@@ -5,12 +5,17 @@ class Point
 	friend double fDist(const Point &, const Point &);		//поиск растояния между точками
 private:
 	int x, y;
+	int Check(int q)const; // функция проверки значения введённых координат
 public:
+	Point(); // конструктор
+	~Point(); //диструктор 
+	Point(const Point &); //конструктор копирования
 	int GetX()const { return x; }	//inline по умолчанию (т.к функция и тело в классе)
 	int GetY()const;	//установка значения y
 	void SetX(int);		//получение значения x
 	void SetY(int);		//получение значения y
-	int ReadX(int);
+	double Dist(const Point &)const;
+	/*string ReadX();		 //вввод данных с клавиатуры*/
 
 
 	void Print()const;		//печать значений x и y на экран
@@ -18,4 +23,5 @@ public:
 
 };
 inline int Point::GetY()const{return y;}	//установка значения y
+
 
